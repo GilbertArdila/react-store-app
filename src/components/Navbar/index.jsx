@@ -6,8 +6,8 @@ const Navbar = () => {
 
   return (
     
-    <nav className='flex flex-col sm:flex-row text-sm sm:text-lg font-light  justify-between items-center fixed z-10 w-full py-5 px-8 '>
-      <ul className='flex items-center gap-3'>
+    <nav className='flex flex-col sm:flex-row text-sm sm:text-lg font-light  justify-between items-center fixed z-10 w-full  py-5 px-8 top-0'>
+      <ul className='flex justify-between  items-center gap-3'>
         <li className='font-semibold text-lg'>
           <NavLink
             to='/'
