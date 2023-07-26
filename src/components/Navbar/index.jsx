@@ -1,7 +1,10 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {NavLink} from 'react-router-dom';
 
+import { cartContext } from '../../cotext';
+
 const Navbar = () => {
+  const context = useContext(cartContext);
   const activeStyle =  'underline underline-offset-2 text-gray-900';
 
   return (
@@ -65,7 +68,7 @@ const Navbar = () => {
             Sign In</NavLink>
         </li>
         <li>
-          🛒 0
+          🛒 {context.count}
         </li>
       </ul>
     </nav>

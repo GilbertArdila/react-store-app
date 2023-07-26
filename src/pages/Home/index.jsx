@@ -12,7 +12,7 @@ const Home = () => {
     .then((response) => response.json())
     .then((data) => setItem(data))
   },[])
-  console.log(item)
+  
   return (
     
 <Layout><div  className='grid gap-4  grid-cols-2 sm:grid-cols-4 w-full max-w-screen-lg px-2'>
