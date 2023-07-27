@@ -1,0 +1,15 @@
+.product-detail{
+    width:230px;
+    height: calc(50vh);
+}
+
+
+
+@media screen and (min-width: 1024px) {
+    .product-detail{
+        width:360px;
+    }
+}
+    
+
+    
