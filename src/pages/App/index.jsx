@@ -1,6 +1,6 @@
 import { useRoutes, BrowserRouter } from "react-router-dom";
 
-import { CartProvider } from "../../cotext";
+import { CartProvider } from "../../context";
 import Home from "../Home";
 import MyAccount from "../MyAccount";
 import MyOrder from "../MyOrder";
@@ -44,6 +44,7 @@ function App() {
     <CartProvider>
     <BrowserRouter>
       <Navbar />
+     
       <AppRoutes />
     </BrowserRouter>
     </CartProvider>

@@ -1,17 +1,17 @@
 import React,{useContext} from "react";
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
-import { cartContext } from "../../cotext";
+import { cartContext } from "../../context";
 
 
 
-import "./styles.css";
+
 
 const ProductDetail = () => {
   const context = useContext(cartContext);
-  console.log(context.productToShow);
+  
   return (
-    <aside className={ `${context.isOpenDetail ? 'flex' : 'hidden'} product-detail flex-col fixed right-0 border border-black rounded-lg bg-white z-20`}>
+    <aside className={ `${context.isOpenDetail ? 'flex' : 'hidden'} w-[230px] h-auto lg:w-[360px] flex-col fixed right-0 border border-black rounded-lg bg-white z-20`}>
       <div className="flex  justify-between items-center p-6">
         <h2 className="font-medium text-xl">Detail</h2>
        
@@ -22,13 +22,13 @@ const ProductDetail = () => {
         
       </div>
       <figure className="px-6">
-        <img className="w-full h-full rounded-lg" src={context.productToShow.url} alt={context.productToShow.name} />
+        <img className="w-full h-full rounded-lg" src={context.productToShow?.url} alt={context.productToShow?.name} />
       </figure>
       <div className="flex flex-col justify-between items-center p-6">
-        <h2 className="font-medium text-xl mb-3">{context.productToShow.name}</h2>
-        <p className="font-light text-sm mb-3">{context.productToShow.category.name}</p>
-        <p className="font-light text-sm mb-3">{context.productToShow.description}</p>
-        <p className="font-medium text-lg">${context.productToShow.price}</p>
+        <h2 className="font-medium text-xl mb-3">{context.productToShow?.name}</h2>
+        <p className="font-light text-sm mb-3">{context.productToShow?.category?.name}</p>
+        <p className="font-light text-sm mb-3">{context.productToShow?.description}</p>
+        <p className="font-medium text-lg">${context.productToShow?.price}</p>
       </div>
     </aside>
   );

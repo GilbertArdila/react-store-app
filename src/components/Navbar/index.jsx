@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 import { ShoppingBagIcon } from '@heroicons/react/24/solid'
 
 
-import { cartContext } from '../../cotext';
+import { cartContext } from '../../context';
 
 const Navbar = () => {
   const context = useContext(cartContext);

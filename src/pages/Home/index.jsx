@@ -4,6 +4,7 @@ import {URL} from '../../api/URL';
 import Layout from '../../components/Layout';
 import Card from '../../components/Card';
 import ProductDetail from '../../components/productDetail';
+import CheckOutSideMenu from '../../components/CheckOutSideMenu';
 
 const Home = () => {
   const [item,setItem] = useState(null);
@@ -23,6 +24,7 @@ const Home = () => {
       ))}
       </div>
       <ProductDetail/>
+      <CheckOutSideMenu/>
     </Layout>
     
     
