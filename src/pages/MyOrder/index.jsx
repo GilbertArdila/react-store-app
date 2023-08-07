@@ -9,7 +9,7 @@ import { totalPrice } from '../../utils';
 const MyOrder = () => {
   const context = useContext(cartContext);
 
-  console.log('orders in my Order',context.orders.slice(-1)[0])
+  
   return (
     <Layout>
       MyOrder

@@ -59,8 +59,6 @@ const OrderCard = (props) => {
       <div className="flex  items-center gap-2">
         <p className="text-lg font-medium font-mono">{total} </p>
 
-        
-
         {isAdded ? (
           <p className="text-sm font-thin text-green-500">added</p>
         ) : (
