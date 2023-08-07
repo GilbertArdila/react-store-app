@@ -52,7 +52,7 @@ const Card = (data) => {
           {data.data.category.name}
         </span>
         <LazyLoadImage
-          className="w-full h-full object-fill rounded-lg"
+          className="w-full h-full object-contain rounded-lg"
           src={data.data.url}
           alt={data.data.name}
           effect="blur"
