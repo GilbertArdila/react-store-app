@@ -7,6 +7,7 @@ import CheckOutSideMenu from "../../components/CheckOutSideMenu";
 import Tittle from "../../components/Tittle";
 import { cartContext } from "../../context";
 import SearchInput from "../../components/SearchInput";
+import Loading from "../../components/Loading";
 
 const Home = () => {
   const context = useContext(cartContext);
@@ -20,11 +21,11 @@ const Home = () => {
           context.item &&
           context.item.map((item) => <Card key={item.id} data={item} />)
         ) : context.filteredItems ? (
-          context.filteredItems.map((item) => (
+          context.filteredItems?.map((item) => (
             <Card key={item.id} data={item} />
           ))
         ) : (
-          <p className="text-center text-2xl">...Loading</p>
+          <Loading />
         )}
       </div>
       <ProductDetail />

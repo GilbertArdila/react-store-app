@@ -26,6 +26,14 @@ export const CartProvider = ({ children }) => {
   //filtered products array
   const [filteredItems, setFilteredItems] = useState(null);
 
+  //login info
+  const [login, setLogin] = useState([]);
+
+  //setting email, user and password into setlogin
+  const setLoginData = (email,user,password) => {
+    setLogin({ email,  user, password });
+  };
+
   // fetch products
   useEffect(() => {
     fetch(URL + "/geeks")
@@ -60,7 +68,7 @@ export const CartProvider = ({ children }) => {
   }, [searchedItem, item]);
 
   
-
+  console.log(orders.length)
   return (
     <cartContext.Provider
       value={{
@@ -84,6 +92,8 @@ export const CartProvider = ({ children }) => {
         setSearchedItem,
         filteredItems,
         setFilteredItems,
+        setLoginData,
+        login,
       }}
     >
       {children}

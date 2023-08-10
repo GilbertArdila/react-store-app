@@ -6,7 +6,7 @@ import MyAccount from "../MyAccount";
 import MyOrder from "../MyOrder";
 import MyOrders from "../MyOrders";
 import NotFound from "../NotFound";
-import SignIn from "../SignIn";
+import LogIn from "../LognIn";
 import Navbar from "../../components/Navbar";
 import "./index.css";
 
@@ -57,8 +57,8 @@ const AppRoutes = () => {
       element: <MyOrder />,
     },
     {
-      path: "/sign-in",
-      element: <SignIn />,
+      path: "/log-in",
+      element: <LogIn />,
     },
     {
       path: "*",

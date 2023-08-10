@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     
     <nav className='flex flex-col sm:flex-row text-sm sm:text-lg font-light  justify-between items-center fixed z-20 w-full  py-5 px-8 top-0 bg-gray-300'>
-      <ul className='flex justify-between  items-center gap-3'>
+      <ul className='flex justify-between  items-center gap-4'>
        
         <li>
           <NavLink 
@@ -52,9 +52,9 @@ const Navbar = () => {
             Others</NavLink>
         </li>
       </ul>
-      <ul className='flex items-center gap-3'>
+      <ul className='flex items-center gap-4'>
         <li className='text-black/60'>
-          customer@gmail.com
+          {context.login?.email}
         </li>
         <li>
           {context.orders.length > 1? <NavLink to='/my-orders'
@@ -71,13 +71,22 @@ const Navbar = () => {
         <li>
           <NavLink to='/my-account'
            className={({isActive}) => isActive ? activeStyle : null}>
-            My Account</NavLink>
+            {context.login.length != 0 ? 'My Account' : null }</NavLink>
         </li>
-        <li>
-          <NavLink to='/sign-in'
+        {context.login.length != 0 ? <li>
+          <NavLink
+           to='/'
+           className={({isActive}) => isActive ? activeStyle : null}
+           onClick={() => context.setLogOut()}
+           >
+            Log Out</NavLink>
+        </li>: 
+        <li >
+          <NavLink to='/log-in'
            className={({isActive}) => isActive ? activeStyle : null}>
-            Sign In</NavLink>
-        </li>
+            Log In</NavLink>
+        </li>}
+        
         <li className='flex items-center'>
         <ShoppingBagIcon className="h-6 w-6 text-blue-500" />
         <div>{context.count}</div> 
