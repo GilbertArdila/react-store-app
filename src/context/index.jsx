@@ -68,7 +68,7 @@ export const CartProvider = ({ children }) => {
   }, [searchedItem, item]);
 
   
-  console.log(orders.length)
+
   return (
     <cartContext.Provider
       value={{
