@@ -23,6 +23,7 @@ const CheckOutSideMenu = () => {
 
   const handleCheckout = () => {
     const orderToAdd = {
+      id: Math.random() * 1000,
       date: new Date().toLocaleDateString(),
       products: context.order,
       totalProducts: context.count,

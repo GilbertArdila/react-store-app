@@ -1,4 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+
+import { URL } from "../api/URL";
 
 export const cartContext = createContext();
 
@@ -16,7 +18,20 @@ export const CartProvider = ({ children }) => {
   // products added to order
   const [order, setOrder] = useState([]);
   // orders array
-    const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState([]);
+  //products array
+  const [item, setItem] = useState(null);
+  //searched products array
+  const [searchedItem, setSearchedItem] = useState(null);
+  //filtered products array
+  const [filteredItems, setFilteredItems] = useState(null);
+
+  // fetch products
+  useEffect(() => {
+    fetch(URL + "/geeks")
+      .then((response) => response.json())
+      .then((data) => setItem(data));
+  }, []);
 
   // open and close detail side menu
   const handleOpenDetail = () => {
@@ -26,8 +41,26 @@ export const CartProvider = ({ children }) => {
   const handleOpenCheckout = () => {
     setIsOpenCheckout(!isOpenCheckout);
   };
+  // filter products by name, description or category
+  const filtered = (item, searchedItem) => {
+    return item.filter(
+      (item) =>
+        item.name.toLowerCase().includes(searchedItem.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchedItem.toLowerCase()) ||
+        item.category.name.toLowerCase().includes(searchedItem.toLowerCase())
+    );
+  };
+  // filter products by name, description or category
+  useEffect(() => {
+    if (searchedItem) {
+      setFilteredItems(filtered(item, searchedItem));
+    } else {
+      setFilteredItems(item);
+    }
+  }, [searchedItem, item]);
 
- 
+  
+
   return (
     <cartContext.Provider
       value={{
@@ -44,7 +77,13 @@ export const CartProvider = ({ children }) => {
         order,
         setOrder,
         orders,
-        setOrders
+        setOrders,
+        item,
+        setItem,
+        searchedItem,
+        setSearchedItem,
+        filteredItems,
+        setFilteredItems,
       }}
     >
       {children}

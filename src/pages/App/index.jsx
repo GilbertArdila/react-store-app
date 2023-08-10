@@ -17,6 +17,26 @@ const AppRoutes = () => {
       element: <Home />,
     },
     {
+      path: "/home",
+      element: <Home />,
+    },
+    {
+      path: "/consoles",
+      element: <Home />,
+    },
+    {
+      path: "/star-wars",
+      element: <Home />,
+    },
+    {
+      path: "/figures",
+      element: <Home />,
+    },
+    {
+      path: "/others",
+      element: <Home />,
+    },
+    {
       path: "/my-account",
       element: <MyAccount />,
     },
@@ -26,6 +46,10 @@ const AppRoutes = () => {
     },
     {
       path: "/my-orders/last",
+      element: <MyOrder />,
+    },
+    {
+      path: "/my-orders/:id",
       element: <MyOrder />,
     },
     {

@@ -11,37 +11,44 @@ const Navbar = () => {
 
   return (
     
-    <nav className='flex flex-col sm:flex-row text-sm sm:text-lg font-light  justify-between items-center fixed z-10 w-full  py-5 px-8 top-0'>
+    <nav className='flex flex-col sm:flex-row text-sm sm:text-lg font-light  justify-between items-center fixed z-20 w-full  py-5 px-8 top-0 bg-gray-300'>
       <ul className='flex justify-between  items-center gap-3'>
-        <li className='font-semibold text-lg'>
-          <NavLink
-            to='/'
-            >Home</NavLink>
-        </li>
+       
         <li>
           <NavLink 
           to='/'
-          className={({isActive}) => isActive ? activeStyle : null}>
+          className={({isActive}) => isActive ? activeStyle : null}
+          onClick={() => context.setSearchedItem()}>
             All</NavLink>
         </li>
         <li>
-          <NavLink to='/consoles'
+          <NavLink
+           to='/consoles'
            className={({isActive}) => isActive ? activeStyle : null}
+           onClick={() => context.setSearchedItem('consoles')}
            >Consoles</NavLink>
         </li>
         <li>
-          <NavLink to='/star-wars'
-           className={({isActive}) => isActive ? activeStyle : null}>
+          <NavLink 
+          to='/star-wars'
+           className={({isActive}) => isActive ? activeStyle : null}
+           onClick={() => context.setSearchedItem('star-wars')}>
             Star-wars</NavLink>
         </li>
         <li>
-          <NavLink to='/figures'
-           className={({isActive}) => isActive ? activeStyle : null}>
+          <NavLink 
+          to='/figures'
+           className={({isActive}) => isActive ? activeStyle : null}
+           onClick={() => context.setSearchedItem('figures')}
+           >
             Figures</NavLink>
         </li>
         <li>
-          <NavLink to='/others'
-           className={({isActive}) => isActive ? activeStyle : null}>
+          <NavLink
+           to='/others'
+           className={({isActive}) => isActive ? activeStyle : null}
+           onClick={() => context.setSearchedItem('other')}
+           >
             Others</NavLink>
         </li>
       </ul>
@@ -50,14 +57,16 @@ const Navbar = () => {
           customer@gmail.com
         </li>
         <li>
-          <NavLink to='/my-orders'
+          {context.orders.length > 1? <NavLink to='/my-orders'
            className={({isActive}) => isActive ? activeStyle : null}>
-            My Orders</NavLink>
+            My Orders</NavLink>:null}
+         
         </li>
         <li>
-          <NavLink to='/my-order'
+      {context.orders.length > 0 ?<NavLink to='/my-order'
            className={({isActive}) => isActive ? activeStyle : null}>
-            My Order</NavLink>
+            My Order</NavLink>: null}
+          
         </li>
         <li>
           <NavLink to='/my-account'

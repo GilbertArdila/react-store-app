@@ -1,30 +1,49 @@
 import React,{useContext} from 'react';
-import Layout from '../../components/Layout';
+import { ChevronLeftIcon } from "@heroicons/react/24/solid";
+import { Link,useParams } from "react-router-dom";
+
 
 import { cartContext } from "../../context";
-import OrderCard from "../../components/OrderCard";
-import { totalPrice } from '../../utils';
+import Layout from '../../components/Layout';
+import Tittle from '../../components/Tittle';
 
 
 const MyOrder = () => {
   const context = useContext(cartContext);
-
+  const {id} = useParams();
+  
+  let order;
+  if(id){
+     order = context.orders.find((item) => item.id == id)
+  }
+  else{
+     
+     order = context.orders.slice(-1)[0];
+    
+  }
+  
   
   return (
     <Layout>
-      MyOrder
+      
+      <div className='flex items-center justify-center relative w-80 mb-4'>
+        <Link to='/my-orders' className='absolute left-0'>
+          <ChevronLeftIcon className='h-6 w-6 text-black cursor-pointer' />
+        </Link>
+        <Tittle tittle='My Order' />
+      </div>
       <div className='flex justify-between p-2'>
 <span className='text-md font-mono m-6'>
-        date: {context.orders.slice(-1)[0].date}</span>
+        date: {order?.date}</span>
       <span className='text-md font-mono m-6'>
-        total: {context.orders.slice(-1)[0].Total}</span>
+        total: {order?.Total}</span>
       <span className='text-md font-mono m-6'>
-        total items: {context.orders.slice(-1)[0].totalProducts}</span>
+        total items: {order?.totalProducts}</span>
       </div>
       
 
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 p-6 ">
-        {context.orders.slice(-1)[0].products.map((item) => (
+        {order?.products.map((item) => (
           <div key={item.id} className='flex justify-between items-center w-[200px] h-[300px] m-6'>
           <figure>
             <img className='w-[200px] h-[200px] object-contain rounded-lg mb-6 border border-blue-600' 
